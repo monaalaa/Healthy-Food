@@ -2,14 +2,14 @@ import React from "react";
 import "./header.styles.scss";
 import logoImage from "./../../assets/logo.jpg";
 import Recipes from "./recipes/recipes.component";
+
 const Header = () => {
-  let result = "";
   let [recipes, setRecipes] = React.useState([]);
 
   async function handleSearchButton(event) {
     event.preventDefault();
     let result = await fetchDataFromApi();
-    // console.log(result);
+
     setRecipes(result);
   }
 
@@ -29,12 +29,14 @@ const Header = () => {
           Search
         </button>
       </form>
+
       <Recipes result={recipes} />
     </div>
   );
 };
 
 function fetchDataFromApi() {
+  clearPreviousSearch();
   let searchParameter = document.getElementById("searchInput");
   var requestOptions = {
     method: "GET",
@@ -48,10 +50,8 @@ function fetchDataFromApi() {
     .catch((error) => console.log("error", error));
 }
 
-function showData(result) {
-  console.log(result);
-  for (let i = 0; i < result.length; i++) {
-    console.log(result[i].title);
-  }
+function clearPreviousSearch() {
+  let container = document.getElementById("container");
+  container.innerHTML = "";
 }
 export default Header;

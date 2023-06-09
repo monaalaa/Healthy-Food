@@ -1,12 +1,22 @@
 const Recipes = ({ result }) => {
   function showData() {
-    console.log(result);
+    let container = document.getElementById("container");
+    // container.innerHTML = "";
     for (let i = 0; i < result.length; i++) {
-      console.log(result[i].title);
+      let recipe = document.createElement("div");
+      recipe.id = result[i].id;
+
+      let title = document.createElement("h2");
+      title.textContent = result[i].title;
+      console.log(title);
+      recipe.appendChild(title);
+      let image = document.createElement("img");
+      image.src = result[i].image;
+      recipe.appendChild(image);
+      container.appendChild(recipe);
     }
   }
-  showData();
 
-  return <div>Recipes {JSON.stringify(result)}</div>;
+  return <div>{showData()}</div>;
 };
 export default Recipes;
