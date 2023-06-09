@@ -1,0 +1,29 @@
+.siteLogo {
+  // border: 1px solid #ddd;
+  //border-radius: 4px;
+  margin-left: 20px;
+  margin-top: 5px;
+  width: 100px;
+  height: 100px;
+  display: block;
+}
+.header {
+  display: flex;
+  align-items: center;
+
+  background-color: #5c5e5f;
+  padding: 20px;
+}
+.search-form {
+  margin-left: 1000px;
+  display: flex;
+}
+.search-input {
+  width: 200px;
+  padding: 5px;
+  margin-right: 5px;
+}
+
+.search-button {
+  padding: 5px 10px;
+}
