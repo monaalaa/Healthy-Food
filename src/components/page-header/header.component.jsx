@@ -14,23 +14,26 @@ const Header = () => {
   }
 
   return (
-    <div className="header">
-      <img src={logoImage} className="siteLogo" alt="Logo" />
+    <div>
+      <div className="header">
+        <img src={logoImage} className="siteLogo" alt="Logo" />
 
-      <form className="search-form ">
-        <input
-          type="text"
-          placeholder="Search..."
-          className=".search-input"
-          id="searchInput"
-          defaultValue="egg"
-        />
-        <button className="search-button" onClick={handleSearchButton}>
-          Search
-        </button>
-      </form>
-
-      <Recipes result={recipes} />
+        <form className="search-form ">
+          <input
+            type="text"
+            placeholder="Search..."
+            className=".search-input"
+            id="searchInput"
+            defaultValue="egg"
+          />
+          <button className="search-button" onClick={handleSearchButton}>
+            Search
+          </button>
+        </form>
+      </div>
+      <div>
+        <Recipes result={recipes} />
+      </div>
     </div>
   );
 };

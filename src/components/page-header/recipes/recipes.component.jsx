@@ -1,22 +1,53 @@
-const Recipes = ({ result }) => {
-  function showData() {
-    let container = document.getElementById("container");
-    // container.innerHTML = "";
-    for (let i = 0; i < result.length; i++) {
-      let recipe = document.createElement("div");
-      recipe.id = result[i].id;
+import React, { useState } from "react";
+import "./recipes.styles.scss";
 
-      let title = document.createElement("h2");
-      title.textContent = result[i].title;
-      console.log(title);
-      recipe.appendChild(title);
-      let image = document.createElement("img");
-      image.src = result[i].image;
-      recipe.appendChild(image);
-      container.appendChild(recipe);
-    }
+const Recipes = ({ result }) => {
+  const [selectedRecipeId, setSelectedRecipeId] = useState(null);
+
+  function showData() {
+    return result.map((recipe) => (
+      <div key={recipe.id}>
+        <h2>{recipe.title}</h2>
+        {createImage(recipe)}
+      </div>
+    ));
   }
 
-  return <div>{showData()}</div>;
+  function createImage(recipe) {
+    return (
+      <div className="gridItem">
+        <img
+          src={recipe.image}
+          alt="My Image"
+          onClick={() => handleImageClick(recipe.id)}
+        />
+      </div>
+    );
+  }
+
+  function handleImageClick(id) {
+    setSelectedRecipeId(id);
+  }
+
+  function getRecipeById(id) {
+    const selectedRecipe = result.find((recipe) => recipe.id === id);
+
+    return (
+      <div className="recipeDetails">
+        <h2>{selectedRecipe.title}</h2>
+        <p>Likes: {selectedRecipe.likes}</p>
+        <p>Missed Ingredient Count: {selectedRecipe.missedIngredientCount}</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="container">
+      {showData()}
+      {selectedRecipeId && getRecipeById(selectedRecipeId)}
+    </div>
+  );
 };
+
 export default Recipes;
+git 
