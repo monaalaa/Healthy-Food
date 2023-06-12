@@ -50,4 +50,3 @@ const Recipes = ({ result }) => {
 };
 
 export default Recipes;
-git 
