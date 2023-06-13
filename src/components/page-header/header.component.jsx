@@ -32,7 +32,7 @@ const Header = () => {
         </form>
       </div>
       <div>
-        <Recipes result={recipes} />
+        <Recipes recipes={recipes} />
       </div>
     </div>
   );

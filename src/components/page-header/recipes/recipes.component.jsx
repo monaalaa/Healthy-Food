@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import "./recipes.styles.scss";
+import Recipe from "../../recipe/recipe.component";
 
-const Recipes = ({ result }) => {
+const Recipes = ({ recipes }) => {
+  console.log(recipes + " recipes at the begonning");
+
   const [selectedRecipeId, setSelectedRecipeId] = useState(null);
+  const [searchRecipes, setsearchRecipes] = useState(null);
 
   function showData() {
-    return result.map((recipe) => (
+    return recipes.map((recipe) => (
       <div key={recipe.id}>
         <h2>{recipe.title}</h2>
         {createImage(recipe)}
@@ -27,24 +31,16 @@ const Recipes = ({ result }) => {
 
   function handleImageClick(id) {
     setSelectedRecipeId(id);
-  }
-
-  function getRecipeById(id) {
-    const selectedRecipe = result.find((recipe) => recipe.id === id);
-
-    return (
-      <div className="recipeDetails">
-        <h2>{selectedRecipe.title}</h2>
-        <p>Likes: {selectedRecipe.likes}</p>
-        <p>Missed Ingredient Count: {selectedRecipe.missedIngredientCount}</p>
-      </div>
-    );
+    console.log(recipes + " recipes before set");
+    setsearchRecipes(recipes);
   }
 
   return (
     <div className="container">
       {showData()}
-      {selectedRecipeId && getRecipeById(selectedRecipeId)}
+      {selectedRecipeId && (
+        <Recipe selectedRecipeId={selectedRecipeId} recipes={searchRecipes} />
+      )}
     </div>
   );
 };
