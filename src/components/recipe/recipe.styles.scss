@@ -1,0 +1,18 @@
+.recipeChild {
+  display: "flex";
+  justify-content: "center";
+  outline: solid;
+  padding: 2em;
+  width: 300px;
+  height: 350px;
+  background-color: antiquewhite;
+}
+.recipeChild-Title {
+  justify-content: "center";
+  align-items: center;
+  color: pink;
+}
+.recipeChild-image {
+  object-fit: contain;
+  align-items: center;
+}

@@ -1,7 +1,7 @@
 .siteLogo {
   margin-left: 20px;
   margin-top: 5px;
-  width: 100px;
+  width: 300px;
   height: 100px;
   display: block;
 }
@@ -9,19 +9,31 @@
   display: flex;
   align-items: center;
 
-  background-color: #5c5e5f;
+  background-color: rgb(239, 182, 151);
   padding: 20px;
 }
 .search-form {
   margin-left: 1000px;
   display: flex;
+  align-items: center;
 }
 .search-input {
   width: 200px;
   padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
   margin-right: 5px;
 }
 
 .search-button {
   padding: 5px 10px;
+  background-color: #da91ce;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.search-button:hover {
+  background-color: #f7c6e7;
 }

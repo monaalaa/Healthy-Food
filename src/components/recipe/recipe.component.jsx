@@ -1,17 +1,24 @@
-import React, { useState } from "react";
+import React from "react";
+import "./recipe.styles.scss";
 
-const Recipe = ({ selectedRecipeId, recipes }) => {
-  function getRecipeById(id, recipes) {
-    const selectedRecipe = recipes.find((recipe) => recipe.id === id);
-
-    return (
-      <div className="recipeDetails">
-        <h2>{selectedRecipe.title}</h2>
-        <p>Likes: {selectedRecipe.likes}</p>
-        <p>Missed Ingredient Count: {selectedRecipe.missedIngredientCount}</p>
-      </div>
-    );
+function Recipe({ recipe }) {
+  function handleImageClick(id) {
+    console.log(id + " recipes before set");
   }
-  return <div>{getRecipeById(selectedRecipeId, recipes)}</div>;
-};
+
+  return (
+    <div key={recipe.id} className="recipeChild">
+      <div key={`${recipe.id}-image`}>
+        <img
+          className="recipeChild-image"
+          src={recipe.image}
+          alt="My Image"
+          onClick={() => handleImageClick(recipe.id)}
+        />
+      </div>
+      <h2 className="recipeChild-Title">{recipe.title}</h2>
+    </div>
+  );
+}
+
 export default Recipe;
