@@ -2,14 +2,11 @@ import React from "react";
 import "./Header.styles.scss";
 import logoImage from "./../../assets/logo.png";
 import Recipes from "../recipes/recipes.component";
+import RendomRecipes from "../rendomRecipes/rendomRecipes.component";
 
 const Header = () => {
   let [recipes, setRecipes] = React.useState([]);
 
-  /*React.useEffect(() => {
-    const data = getRandomRecipes();
-    setRecipes(data);
-  }, []);*/
   async function handleSearchButton(event) {
     event.preventDefault();
     let result = await fetchDataFromApi();
@@ -27,7 +24,6 @@ const Header = () => {
             placeholder="Search..."
             className=".search-input"
             id="searchInput"
-            defaultValue="egg"
           />
           <button className="search-button" onClick={handleSearchButton}>
             Search
@@ -35,6 +31,7 @@ const Header = () => {
         </form>
       </div>
       <div>
+        <RendomRecipes />
         <Recipes recipes={recipes} />
       </div>
     </div>
@@ -47,18 +44,7 @@ function fetchDataFromApi() {
 
   return fetchRecipes(searchParameter);
 }
-async function getRandomRecipes() {
-  var requestOptions = {
-    method: "GET",
-    redirect: "follow",
-  };
 
-  const url =
-    "https://api.spoonacular.com/recipes/random?limitLicense=true&tags=ipsum ea proident amet occaecat&number=10&apiKey=fc505b2eb4184b8b84144814e199dca1";
-  const response = await fetch(url, requestOptions);
-  const data = await response.json();
-  return data;
-}
 async function fetchRecipes(searchParameter) {
   const url = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${searchParameter.value}&number=10&limitLicense=true&ranking=1&ignorePantry=false&apiKey=fc505b2eb4184b8b84144814e199dca1`;
 

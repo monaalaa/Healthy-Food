@@ -2,9 +2,7 @@ import React from "react";
 import "./recipe.styles.scss";
 
 function Recipe({ recipe }) {
-  function handleImageClick(id) {
-    console.log(id + " recipes before set");
-  }
+  function handleImageClick(id) {}
 
   return (
     <div key={recipe.id} className="recipeChild">
